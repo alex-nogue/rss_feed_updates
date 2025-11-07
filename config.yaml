@@ -1,0 +1,20 @@
+# Discord webhook configurations
+webhooks:
+  myanimelist: "${DISCORD_WEBHOOK_MYANIMELIST}" # MyAnimeList news channel
+  crunchyroll: "${DISCORD_WEBHOOK_CRUNCHYROLL}" # Crunchyroll news channel
+
+# Filters for RSS feeds
+filters:
+  manga_filter: "(?i)(one|bleach|isekai)" # Case-insensitive match for specific anime
+
+# RSS feeds configuration
+feeds:
+  - name: myanimelist
+    url: https://myanimelist.net/rss/news.xml
+    webhook: myanimelist
+    regex: "(?i)(one|bleach|isekai)"
+
+  - name: crunchyroll
+    url: https://cr-news-api-service.prd.crunchyrollsvc.com/v1/en-US/rss
+    webhook: crunchyroll
+    regex: "(?i)(one|bleach|isekai)"
