@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>MyAnimeList: News</title>
+    <link>https://myanimelist.net/news</link>
+    <description>The latest news from MyAnimeList</description>
+    <language>en-us</language>
+    <pubDate>Sat, 09 Nov 2025 12:00:00 GMT</pubDate>
+    <lastBuildDate>Sat, 09 Nov 2025 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Frieren: Beyond Journey's End Anime Announces Second Cour Details</title>
+      <link>https://myanimelist.net/news/test1</link>
+      <description>The official website for the anime adaptation of "Frieren: Beyond Journey's End" has revealed new details about its second cour. The series continues to follow the elven mage's journey of understanding humanity.</description>
+      <pubDate>Sat, 09 Nov 2025 11:30:00 GMT</pubDate>
+      <guid>https://myanimelist.net/news/test1</guid>
+      <media:thumbnail url="https://cdn.myanimelist.net/images/test-frieren.jpg" />
+    </item>
+    <item>
+      <title>Dandadan Manga Gets TV Anime Adaptation for 2024</title>
+      <link>https://myanimelist.net/news/test2</link>
+      <description>Science SARU will animate the supernatural action series "Dandadan" for broadcast in 2024. The manga by Yukinobu Tatsu has been a hit since its 2021 debut.</description>
+      <pubDate>Sat, 09 Nov 2025 11:00:00 GMT</pubDate>
+      <guid>https://myanimelist.net/news/test2</guid>
+      <media:thumbnail url="https://cdn.myanimelist.net/images/test-dandadan.jpg" />
+    </item>
+    <item>
+      <title>Jujutsu Kaisen Season 2 Breaks Streaming Records</title>
+      <link>https://myanimelist.net/news/test3</link>
+      <description>MAPPA's adaptation of "Jujutsu Kaisen" continues to dominate streaming platforms with its second season, setting new viewership records.</description>
+      <pubDate>Sat, 09 Nov 2025 10:30:00 GMT</pubDate>
+      <guid>https://myanimelist.net/news/test3</guid>
+      <media:thumbnail url="https://cdn.myanimelist.net/images/test-jjk.jpg" />
+    </item>
+    <item>
+      <title>New Dragon Ball Daima Project Announced</title>
+      <link>https://myanimelist.net/news/test4</link>
+      <description>Toei Animation reveals a new Dragon Ball project titled "Dragon Ball Daima", featuring an original story by Akira Toriyama.</description>
+      <pubDate>Sat, 09 Nov 2025 10:00:00 GMT</pubDate>
+      <guid>https://myanimelist.net/news/test4</guid>
+      <media:thumbnail url="https://cdn.myanimelist.net/images/test-dragonball.jpg" />
+    </item>
+    <item>
+      <title>Chainsaw Man Movie Adaptation Confirmed</title>
+      <link>https://myanimelist.net/news/test5</link>
+      <description>MAPPA announces a theatrical film adaptation of the "Chainsaw Man" manga, adapting a crucial arc from the series.</description>
+      <pubDate>Sat, 09 Nov 2025 09:30:00 GMT</pubDate>
+      <guid>https://myanimelist.net/news/test5</guid>
+      <media:thumbnail url="https://cdn.myanimelist.net/images/test-chainsawman.jpg" />
+    </item>
+  </channel>
+</rss>

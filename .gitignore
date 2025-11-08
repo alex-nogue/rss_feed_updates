@@ -4,6 +4,12 @@ __pycache__/
 
 # Virtual environments
 venv/
+.venv/
 
 # Editor directories
 .vscode/
+
+# Python packaging
+*.egg-info/
+dist/
+build/

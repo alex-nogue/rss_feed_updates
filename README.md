@@ -20,6 +20,23 @@ Quick start
 python -m rss_notifier.main
 ```
 
+Development & Testing
+
+To run the tests:
+
+```bash
+# Install test dependencies
+pip install pytest
+
+# Run tests using PYTHONPATH to find the package
+PYTHONPATH=src pytest tests/test_static_feed.py -v
+
+# Run all tests
+PYTHONPATH=src pytest tests/ -v
+```
+
+The test suite includes a static RSS feed (`tests/test_feeds/myanimelist_test.xml`) for testing filters without relying on external feeds.
+
 Or enable the provided GitHub Actions workflow to run hourly. The workflow will attempt to commit `data/seen.json` back to the repo so subsequent runs only process new items.
 
 Files of note
