@@ -11,11 +11,15 @@ import sys
 logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', level=logging.INFO)
 
 
-def process_feed(feed: Dict[str, Any], seen: set) -> Tuple[List[Tuple[str, Any]], List[Tuple[str, Any]]]:
-    """Process a single feed, return (new_entries, matched_entries)."""
+def process_feed(feed: Dict[str, Any], seen: set) -> Tuple[List[Tuple[str, Any]], List[Tuple[str, Any]], set]:
+    """Process a single feed, return (new_entries, matched_entries, current_entry_ids).
+
+    current_entry_ids is the set of ids for all entries fetched from this feed so
+    the caller can replace the persisted `seen` state with the latest snapshot.
+    """
     entries = fetch_entries(feed['url'])
     if not entries:
-        return [], []
+        return [], [], set()
 
     new_added = []
     matched = []
@@ -30,7 +34,9 @@ def process_feed(feed: Dict[str, Any], seen: set) -> Tuple[List[Tuple[str, Any]]
         if feed['pattern'].search(entry_text(entry)):
             matched.append((eid, entry))
 
-    return new_added, matched
+    # collect ids for all entries fetched from this feed
+    current_ids = {make_entry_id(entry) for entry in entries}
+    return new_added, matched, current_ids
 
 
 def run_once(config_path: Path = Path("config.yaml")):
@@ -42,17 +48,18 @@ def run_once(config_path: Path = Path("config.yaml")):
     
     # Process each feed (webhooks and patterns are already resolved)
     feeds = get_feeds_with_webhooks(config)
-    if not feeds:
-        raise ValueError("No feeds found in config")
 
     all_new = []
     all_matched = []
+    # Snapshot of current entries across all feeds (we will persist this set)
+    current_snapshot = set()
     
     for feed in feeds:
         try:
-            new_added, matched = process_feed(feed, seen)
+            new_added, matched, current_ids = process_feed(feed, seen)
             all_new.extend(new_added)
             all_matched.extend([(eid, entry, feed) for eid, entry in matched])
+            current_snapshot.update(current_ids)
         except Exception as e:
             logging.error(f"Failed to process feed {feed['name']}: {e}")
             raise
@@ -70,11 +77,7 @@ def run_once(config_path: Path = Path("config.yaml")):
     else:
         logging.info(f"No new matching entries (checked {len(all_new)} new entries)")
 
-    # Update state with all new entries
-    for eid, _ in all_new:
-        seen.add(eid)
-
-    state["seen"] = list(seen)
+    state["seen"] = list(current_snapshot)
     state["last_run"] = now_iso()
     save_state(state)
 
