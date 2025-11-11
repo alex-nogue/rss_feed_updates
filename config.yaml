@@ -4,7 +4,26 @@ webhooks:
 
 # Filters for RSS feeds
 filters:
-  manga_filter: "(?i)(one|bleach|isekai)" # Case-insensitive match for specific anime
+  manga_filter: "(?i)(placeholder)" # Case-insensitive match for specific anime
+  reddit_filter: "todo"
+
+series:
+  a_silent_voice: "a silent voice"
+  beastars: "beastars"
+  bloom: "the fragrant flower blooms with dignity|kaoru hana"
+  dandadan: "dandadan"
+  dungeon_meshi: "dungeon meshi|delicious in dungeon"
+  evangelion: "evangelion"
+  frieren: "frieren"
+  hyakuemu: "hyakuemu|uoto|100m|100 meter"
+  hunter_x_hunter: "hunter x hunter|hunterxhunter"
+  made_in_abyss: "made in abyss"
+  medalist: "medalist"
+  paripi_koumei: "paripi koumei|kongming"
+  ranma: "ranma"
+  sanda: "sanda"
+  solo_leveling: "solo leveling"
+  witch_hat_atelier: "witch hat atelier|tongari boushi no atelier"
 
 # RSS feeds configuration
 feeds:
@@ -15,5 +34,15 @@ feeds:
 
   - name: crunchyroll
     url: https://cr-news-api-service.prd.crunchyrollsvc.com/v1/en-US/rss
+    webhook: discord_manga
+    regex: manga_filter
+
+  - name: anime_news_network_all
+    url: https://www.animenewsnetwork.com/all/rss.xml
+    webhook: discord_manga
+    regex: manga_filter
+
+  - name: anime_news_network_newsroom
+    url: https://www.animenewsnetwork.com/newsroom/rss.xml?ann-edition=w
     webhook: discord_manga
     regex: manga_filter

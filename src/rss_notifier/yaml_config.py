@@ -36,6 +36,8 @@ def get_feeds_with_webhooks(config: Dict[str, Any]) -> List[Dict[str, Any]]:
         # Pre-compile the regex pattern
         regex_name = feed['regex']
         regex_pattern = config['filters'][regex_name]
+        concatenated_series = "|".join(config['series'].values())
+        regex_pattern = regex_pattern.replace('placeholder', concatenated_series)
         feed_copy['pattern'] = re.compile(regex_pattern)
         result.append(feed_copy)
 

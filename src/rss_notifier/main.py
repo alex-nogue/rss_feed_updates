@@ -70,7 +70,7 @@ def run_once(config_path: Path = Path("config.yaml")):
         logging.info(f"Found {len(all_matched)} matching entries across all feeds")
         
         for eid, entry, feed in all_matched:
-            content = build_message(entry)
+            content = build_message(entry, feed)
             webhook_url = feed['webhook_url']
             send_webhook(webhook_url, content)
             logging.info(f"Sent webhook for: {entry.get('title')} to {feed['name']} webhook")
