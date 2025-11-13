@@ -5,10 +5,17 @@ webhooks:
 # Test filters
 filters:
   manga_filter: "(?i)(frieren|dandadan|jujutsu)" # Case-insensitive match for our test entries
+  reddit_filter: '(?i)(?=.*(frieren|dandadan|jujutsu))(?=.*\[(DISC|NEWS)\]).+'
+
+# Series mapping used by the main loader to build/replace placeholders
+series:
+  frieren: "frieren"
+  dandadan: "dandadan"
+  jujutsu: "jujutsu"
 
 # Test feeds configuration - uses local XML file
 feeds:
   - name: myanimelist_test
     url: file:///home/alex/Projects/Perso_Apps/rss_feed_updates/tests/test_feeds/myanimelist_test.xml
     webhook: discord_manga
-    regex: manga_filter
+    regex: reddit_filter

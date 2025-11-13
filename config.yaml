@@ -5,7 +5,7 @@ webhooks:
 # Filters for RSS feeds
 filters:
   manga_filter: "(?i)(placeholder)" # Case-insensitive match for specific anime
-  reddit_filter: "todo"
+  reddit_filter: '(?i)(?=.*(placeholder))(?=.*\[(DISC|NEWS)\]).+'
 
 series:
   a_silent_voice: "a silent voice"
@@ -46,3 +46,8 @@ feeds:
     url: https://www.animenewsnetwork.com/newsroom/rss.xml?ann-edition=w
     webhook: discord_manga
     regex: manga_filter
+
+  - name: reddit
+    url: https://www.reddit.com/r/manga/.rss
+    webhook: discord_manga
+    regex: reddit_filter

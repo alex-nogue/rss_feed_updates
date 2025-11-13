@@ -1,5 +1,10 @@
 import re
+import sys
 from pathlib import Path
+
+# Ensure the package src directory is importable when running tests directly
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
 from rss_notifier.filters import entry_text
 from rss_notifier.rss_fetcher import fetch_entries
 from rss_notifier.yaml_config import load_yaml_config, get_feeds_with_webhooks
