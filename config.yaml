@@ -1,53 +1,68 @@
 # Discord webhook configurations
 webhooks:
-  discord_manga: "${DISCORD_WEBHOOK_MYANIMELIST}" # MyAnimeList news channel
+  discord_manga_news: "${DISCORD_WEBHOOK_MANGA_NEWS}"
+  discord_chapter_updates: "${DISCORD_WEBHOOK_CHAPTER_UPDATES}"
 
 # Filters for RSS feeds
 filters:
   manga_filter: "(?i)(placeholder)" # Case-insensitive match for specific anime
-  reddit_filter: '(?i)(?=.*(placeholder))(?=.*\[(DISC|NEWS)\]).+'
+  reddit_filter_news: '(?i)(?=.*(placeholder))(?=.*\[NEWS\]).+'
+  reddit_filter_chapter: '(?i)(?=.*(placeholder))(?=.*\[DISC\]).+'
 
 series:
   a_silent_voice: "a silent voice"
   beastars: "beastars"
-  bloom: "the fragrant flower blooms with dignity|kaoru hana"
   dandadan: "dandadan"
   dungeon_meshi: "dungeon meshi|delicious in dungeon"
   evangelion: "evangelion"
   frieren: "frieren"
   hyakuemu: "hyakuemu|uoto|100m|100 meter"
   hunter_x_hunter: "hunter x hunter|hunterxhunter"
+  kaoru_hana: "the fragrant flower blooms with dignity|kaoru hana"
   made_in_abyss: "made in abyss"
   medalist: "medalist"
   paripi_koumei: "paripi koumei|kongming"
   ranma: "ranma"
   sanda: "sanda"
   solo_leveling: "solo leveling"
+  the_beginning_after_the_end: "beginning after the end"
   witch_hat_atelier: "witch hat atelier|tongari boushi no atelier"
 
 # RSS feeds configuration
 feeds:
+  # News
   - name: myanimelist
     url: https://myanimelist.net/rss/news.xml
-    webhook: discord_manga
+    webhook: discord_manga_news
     regex: manga_filter
 
+  # News
   - name: crunchyroll
     url: https://cr-news-api-service.prd.crunchyrollsvc.com/v1/en-US/rss
-    webhook: discord_manga
+    webhook: discord_manga_news
     regex: manga_filter
 
-  - name: anime_news_network_all
-    url: https://www.animenewsnetwork.com/all/rss.xml
-    webhook: discord_manga
-    regex: manga_filter
-
+  # News
   - name: anime_news_network_newsroom
     url: https://www.animenewsnetwork.com/newsroom/rss.xml?ann-edition=w
-    webhook: discord_manga
+    webhook: discord_manga_news
     regex: manga_filter
 
-  - name: reddit
+  # News
+  - name: reddit_news
     url: https://www.reddit.com/r/manga/.rss
-    webhook: discord_manga
-    regex: reddit_filter
+    webhook: discord_manga_news
+    regex: reddit_filter_news
+
+  # Manga Chapter
+  - name: reddit_chapter_update
+    url: https://www.reddit.com/r/manga/.rss
+    webhook: discord_chapter_updates
+    regex: reddit_filter_chapter
+
+  # Not needed, as newsroom has less but sticks to relevant news.
+  # # News
+  # - name: anime_news_network_all
+  #   url: https://www.animenewsnetwork.com/all/rss.xml
+  #   webhook: discord_manga
+  #   regex: manga_filter

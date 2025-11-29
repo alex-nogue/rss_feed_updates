@@ -26,8 +26,8 @@ jobs:
 
       - name: Run notifier
         env:
-          DISCORD_WEBHOOK_MYANIMELIST: ${{ secrets.DISCORD_WEBHOOK_MYANIMELIST }}
-          DISCORD_WEBHOOK_CRUNCHYROLL: ${{ secrets.DISCORD_WEBHOOK_CRUNCHYROLL }}
+          DISCORD_WEBHOOK_MANGA_NEWS: ${{ secrets.DISCORD_WEBHOOK_MANGA_NEWS }}
+          DISCORD_WEBHOOK_CHAPTER_UPDATES: ${{ secrets.DISCORD_WEBHOOK_CHAPTER_UPDATES }}
         run: |
           python -m src.rss_notifier.main
 
