@@ -25,9 +25,11 @@ def process_feed(feed: Dict[str, Any], seen: set) -> Tuple[List[Tuple[str, Any]]
     matched = []
 
     for entry in entries:
+        logging.info(f"Feed: {feed['name']} | Fetched entry: {entry.get('title')}")
         eid = make_entry_id(entry)
         if eid in seen:
             continue
+        entry['_feed_name'] = feed['name']
         new_added.append((eid, entry))
 
         # Check if entry matches feed's regex pattern
@@ -63,6 +65,9 @@ def run_once(config_path: Path = Path("config.yaml")):
         except Exception as e:
             logging.error(f"Failed to process feed {feed['name']}: {e}")
             raise
+
+    for eid, entry in all_new:
+        logging.info(f"New entry found for Feed {entry.get('_feed_name')}: {entry.get('title')}")
 
     # Send notifications for matches
     if all_matched:

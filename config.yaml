@@ -27,6 +27,7 @@ series:
   solo_leveling: "solo leveling"
   the_beginning_after_the_end: "beginning after the end"
   witch_hat_atelier: "witch hat atelier|tongari boushi no atelier"
+  jujutsu_kaisen: "jujutsu kaisen" # to delete
 
 # RSS feeds configuration
 feeds:
